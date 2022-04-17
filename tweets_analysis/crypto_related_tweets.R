@@ -2,7 +2,7 @@
 setwd('/Users/daixinming/PycharmProjects/crypto_prediction/tweets')
 library(tidyverse)
 library(tidytext)
-source('analysis/bag_of_words.R')
+source('tweets_analysis/bag_of_words.R')
 
 tweet_elon <- read_csv('data_tweets/tweet_elon.csv')
 

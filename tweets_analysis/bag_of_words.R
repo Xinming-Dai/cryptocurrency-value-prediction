@@ -1,7 +1,7 @@
 
 bag_of_words <- c('blockchain', 'coin', 'coinbase', 'cryptocurrency', 'cryptocurrencies',
                   'decentralization', 'defi',
-                  'altcoin', 'altcoins', 'bitcoin', 'bitcoins', 'Ethereum', 'dogecoin', 'dogecoins', 'cardano',
+                  'altcoin', 'altcoins', 'bitcoin', 'bitcoins', 'ethereum', 'dogecoin', 'dogecoins', 'cardano',
                   'exchange', 'nft', 'nfts',
                   'btc', '#btc', '$btc',
                   'xbt', '#xbt', '$xbt',
