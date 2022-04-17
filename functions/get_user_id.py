@@ -21,6 +21,7 @@ def get_user_id(user_name):
 
     return user_id
 
+
 # the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
     user_name = ['elonmusk', 'WSJmarkets']

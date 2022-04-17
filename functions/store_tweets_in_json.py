@@ -22,6 +22,7 @@ def store_tweets_in_json(tweets):
 
     return results
 
+
 # the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
     user_id = '44196397'  # elon musk

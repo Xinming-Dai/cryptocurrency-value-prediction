@@ -88,6 +88,7 @@ def get_users_tweets(user_id, max_results=5, until_id=None):
 
     return (tweets)
 
+
 # the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
     user_id = '44196397'  # elon musk
