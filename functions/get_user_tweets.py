@@ -1,14 +1,16 @@
 import tweepy
-import json
+import __path
+from twitter_credentials import bearer_token, consumer_key, consumer_secret, access_token, access_token_secret
 
 
-# import twitter credentials
-from twitter_credentials import consumer_key, consumer_secret, access_key, access_secret
-
-def get_users_tweets(user_id, max_results=100, until_id=None):
-    '''
+def get_users_tweets(user_id, max_results=5, until_id=None):
+    """
     get tweets from a user with the oldest tweet_id
-    '''
+    :param user_id: a user id
+    :param max_results: default 5 tweets
+    :param until_id: the oldest tweet id. default is None.
+    :return: tweets in dict structure
+    """
 
     # authorize twitter, initialize
     client = tweepy.Client(bearer_token=bearer_token,
@@ -86,8 +88,8 @@ def get_users_tweets(user_id, max_results=100, until_id=None):
 
     return (tweets)
 
+# the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
     user_id = '44196397'  # elon musk
-    max_results = 100
-    until_id = '1387892910960615428'
-    get_users_tweets(user_id, max_results, until_id)
+    tweets = get_users_tweets(user_id, max_results=5, until_id='1387892910960615428')
+    print(tweets)
