@@ -25,8 +25,8 @@ tweet_elon_crypto <-
 # count how many tweets related to cryptocurrencies that Elon tweeted
 tweet <- 
   tweet_elon_crypto %>% 
-  mutate(created_at = format(parse_date_time(created_at, orders = "ymd HMS"), format = "%Y-%m-%d")) %>% 
-  group_by(created_at) %>% 
+  mutate(date = as_date(format(created_at, format = "%Y-%m-%d"))) %>% 
+  group_by(date) %>% 
   mutate(num_tweets = n()) %>% 
-  distinct(created_at, num_tweets)
+  distinct(date, num_tweets)
 
