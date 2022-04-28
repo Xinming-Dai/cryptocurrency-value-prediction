@@ -11,7 +11,8 @@ until_date <- "2022-04-10"
 
 tickers = c("ETH-USD", "BTC-USD", "DOGE-USD")
 
-# how to compute Volatility Index (VIX)
+# how to compute Volatility Index (VIX)?--------
+# how to get volatility of S&P 500?---------
 doge <- 
   tq_get("DOGE-USD",
          from = start_date,
