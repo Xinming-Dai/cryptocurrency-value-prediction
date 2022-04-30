@@ -1,12 +1,25 @@
 # get crypto_related_tweets
-setwd('/Users/daixinming/PycharmProjects/crypto_prediction/tweets')
 library(tidyverse)
 library(tidytext)
 library(lubridate)
 
-source('cryptocurrency-value-prediction/bag_of_words.R')
+# bag of words related to cryptos----------------------
+bag_of_words <- c('blockchain', 'coin', 'coinbase', 'cryptocurrency', 'cryptocurrencies',
+                  'decentralization', 'defi',
+                  'altcoin', 'altcoins', 'bitcoin', 'bitcoins', 'ethereum', 'ethereums', 'dogecoin', 'dogecoins', 'cardano',
+                  'exchange', 'nft', 'nfts',
+                  'btc', '#btc', '$btc',
+                  'xbt', '#xbt', '$xbt',
+                  'eth', '#eth', '$eth',
+                  'doge', '#doge', '$doge',
+                  'bnb', '#bnb', '$bnb',
+                  'ada', '#ada', '$ada',
+                  'xpr', '#xpr', '$xpr',
+                  'dash', '#dash', '$dash',
+                  'satoshi', 'nakamoto',
+                  'binance', 'U+1F415')
 
-tweet_elon <- read_csv('data_tweets/tweet_elon.csv')
+tweet_elon <- read_csv('../tweets/data_tweets/tweet_elon.csv')
 
 tweet_elon <- 
   tweet_elon %>% 
