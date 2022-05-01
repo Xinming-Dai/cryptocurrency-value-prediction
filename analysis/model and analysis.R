@@ -11,7 +11,7 @@ start_date <- "2021-04-28"
 end_date <- "2022-04-26"
 
 # we want those three companies' cryptocurrency data
-tickers = c("ETH-USD", "BTC-USD", "DOGE-USD", "USDT-USD", "SOL-USD", "BCH-USD")
+tickers = c("ETH-USD", "BTC-USD", "DOGE-USD", "SOL-USD", "BCH-USD")
 
 # we set the outcome be 1 if the daily the absolute return is greater than or equal to 5%, 0 otherwise
 # For each company, use tq_get() to obtain their stock price from 2021-04-28 to 2022-04-26
