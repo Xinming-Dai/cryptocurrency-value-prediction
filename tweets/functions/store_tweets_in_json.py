@@ -1,5 +1,5 @@
 import json
-from get_user_tweets import get_users_tweets
+from get_user_tweets import get_users_tweets, get_users_latest_tweets
 
 
 def store_tweets_in_json(tweets):
@@ -26,9 +26,9 @@ def store_tweets_in_json(tweets):
 # the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
     user_id = '44196397'  # elon musk
-
-    tweets = get_users_tweets(user_id, max_results=5, until_id='1387892910960615428')
+    tweets = get_users_latest_tweets(user_id, since_id='1513288055146225671', max_results=100)
+    print(tweets)
     results = store_tweets_in_json(tweets)
 
-    with open('../data_tweets/test.json', 'a') as f:
+    with open('../data_tweets/newest_tweets.json', 'a') as f:
         json.dump(results, f, indent=4)
