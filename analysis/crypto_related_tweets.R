@@ -19,7 +19,7 @@ bag_of_words <- c('blockchain', 'coin', 'coinbase', 'cryptocurrency', 'cryptocur
                   'satoshi', 'nakamoto',
                   'binance', 'U+1F415')
 
-tweet_elon <- read_csv('../tweets/data_tweets/tweet_elon.csv')
+tweet_elon <- read_csv('../tweets/data_tweets//tweet_elon.csv')
 
 tweet_elon <- 
   tweet_elon %>% 
@@ -33,7 +33,7 @@ tweet_elon_crypto <-
   tweet_elon_token %>% 
   filter(words %in% bag_of_words)
 
-# write.csv(tweet_elon_crypto, 'data_tweets/tweet_elon_crypto.csv')
+write.csv(tweet_elon_crypto, '../tweets/data_tweets/tweet_elon_crypto.csv')
 
 # count how many tweets related to cryptocurrencies that Elon tweeted
 tweet <- 
