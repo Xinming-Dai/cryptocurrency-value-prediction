@@ -40,6 +40,6 @@ tweet <-
   tweet_elon_crypto %>% 
   mutate(date = as_date(format(created_at, format = "%Y-%m-%d"))) %>% 
   group_by(date) %>% 
-  mutate(num_tweets = n()) %>% 
+  mutate(num_tweets = n_distinct(tweet_id)) %>% 
   distinct(date, num_tweets)
 

@@ -80,10 +80,10 @@ logistic <- glm(eth ~ doge + btc + sol + bch + num_tweets, data = eth, family = 
 summary(logistic)
 
 # make prediction for simple logistic regression and logi with interaction terms
-logistic_prob <- predict(logistic, eth_log)
+logistic_prob <- predict(logistic, eth)
 
 # AUC
-logistic_pred <- prediction(logistic_prob, eth_log$eth)
+logistic_pred <- prediction(logistic_prob, eth$eth)
 logisitc_performace <- performance(logistic_pred, 'auc')
 cat('The AUC score of the simple logisitc is ', logisitc_performace@y.values[[1]], "\n")
 
