@@ -19,7 +19,7 @@ bag_of_words <- c('blockchain', 'coin', 'coinbase', 'cryptocurrency', 'cryptocur
                   'satoshi', 'nakamoto',
                   'binance', 'U+1F415')
 
-tweet_elon <- read_csv('../tweets/data_tweets//tweet_elon.csv')
+tweet_elon <- read_csv('../tweets/data_tweets/tweet_elon.csv')
 
 tweet_elon <- 
   tweet_elon %>% 
