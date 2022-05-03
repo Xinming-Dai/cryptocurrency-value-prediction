@@ -1,61 +1,159 @@
 import tweepy
-import __path
-from twitter_credentials import bearer_token, consumer_key, consumer_secret, access_token, access_token_secret
+import json
+import pandas as pd
 
 
-def get_users_tweets(user_id, max_results=5, until_id=None):
-    """
-    get tweets from a user with the oldest tweet_id
-    :param user_id: a user id
-    :param max_results: default 5 tweets
-    :param until_id: the oldest tweet id. default is None.
-    :return: tweets in dict structure
-    """
+class GetUserTweets:
+    def __init__(self, bearer_token, consumer_key, consumer_secret, access_token, access_token_secret):
+        self.bearer_token = bearer_token
+        self.consumer_key = consumer_key
+        self.consumer_secret = consumer_secret
+        self.access_token = access_token
+        self.access_token_secret = access_token_secret
+        self.user_id = []
+        self.tweets = []
+        self.tweets_in_json = []
+        self.tweets_in_dataframe = pd.DataFrame()
 
-    # authorize twitter, initialize
-    client = tweepy.Client(bearer_token=bearer_token,
-                           consumer_key=consumer_key,
-                           consumer_secret=consumer_secret,
-                           access_token=access_token,
-                           access_token_secret=access_token_secret)
+    # get user id
+    def get_user_id(self, user_name):
+        """
+        according to user name to get user id that is needed for getting tweets
+        :param user_name: a list of user name
+        :return: user id
+        """
 
-    request_time = 0  # the number of requests
-    tweets = []
-    i = 0
+        # authorize twitter, initialize
+        client = tweepy.Client(bearer_token=self.bearer_token,
+                               consumer_key=self.consumer_key,
+                               consumer_secret=self.consumer_secret,
+                               access_token=self.access_token,
+                               access_token_secret=self.access_token_secret)
 
-    while (request_time <= 100) & (i != 99):  # the maximum number of requests that you want to send
+        for username in user_name:
+            get_user = client.get_user(username=username)
+            self.user_id.append(get_user.data.id)
 
-        if until_id is None:  # send request to get the latest tweets
-            for i in range(0, 100):  # try to send maximum 100 request
-                tweet = client.get_users_tweets(id=user_id,
-                                                max_results=max_results,
-                                                expansions='author_id',
-                                                tweet_fields='created_at')
+        print(self.user_id)
+        return self.user_id
 
-                if tweet.data is not None:  # successfully get response
-                    tweets.append(tweet)
-                    until_id = tweets[-1].meta['oldest_id']  # update until_id as the oldest one
+    def get_users_tweets(self, user_id, max_results=5, until_id=None):
+        """
+        get tweets from a user with the oldest tweet_id
+        :param user_id: a user id
+        :param max_results: default 5 tweets
+        :param until_id: the oldest tweet id. default is None.
+        :return: tweets in dict structure
+        """
 
-                    print('API responses at the %sth request' % (i + 1))
-                    request_time = request_time + (i + 1)
+        # authorize twitter, initialize
+        client = tweepy.Client(bearer_token=self.bearer_token,
+                               consumer_key=self.consumer_key,
+                               consumer_secret=self.consumer_secret,
+                               access_token=self.access_token,
+                               access_token_secret=self.access_token_secret)
 
-                    break
+        request_time = 0  # the number of requests
+        self.tweets = []
+        i = 0
 
-                elif i == 99:  # if send 99 requests and still get no response, then break the loop
-                    print('You have gotten the oldest tweet.')
-                    break
+        while (request_time <= 100) & (i != 99):  # the maximum number of requests that you want to send
 
-        else:  # send request to get tweets older than the until_id
-            if len(tweets) == 0:
+            if until_id is None:  # send request to get the latest tweets
+                for i in range(0, 100):  # try to send maximum 100 request
+                    tweet = client.get_users_tweets(id=user_id,
+                                                    max_results=max_results,
+                                                    expansions='author_id',
+                                                    tweet_fields='created_at')
+
+                    if tweet.data is not None:  # successfully get response
+                        self.tweets.append(tweet)
+                        until_id = self.tweets[-1].meta['oldest_id']  # update until_id as the oldest one
+
+                        print('API responses at the %sth request' % (i + 1))
+                        request_time = request_time + (i + 1)
+
+                        break
+
+                    elif i == 99:  # if send 99 requests and still get no response, then break the loop
+                        print('You have gotten the oldest tweet.')
+                        break
+
+            else:  # send request to get tweets older than the until_id
+                if len(self.tweets) == 0:
+                    for i in range(0, 100):
+                        tweet = client.get_users_tweets(id=user_id,
+                                                        max_results=max_results,
+                                                        until_id=until_id,
+                                                        expansions='author_id',
+                                                        tweet_fields='created_at')
+
+                        if tweet.data is not None:
+                            self.tweets.append(tweet)
+
+                            print('API responses at the %sth request' % (i + 1))
+                            request_time = request_time + (i + 1)
+
+                            break
+
+                        elif i == 99:
+                            print('You have gotten the oldest tweet.')
+                            break
+                else:
+                    until_id = self.tweets[-1].meta['oldest_id']
+                    for i in range(0, 100):
+                        tweet = client.get_users_tweets(id=user_id,
+                                                        max_results=max_results,
+                                                        until_id=until_id,
+                                                        expansions='author_id',
+                                                        tweet_fields='created_at')
+
+                        if tweet.data is not None:
+                            self.tweets.append(tweet)
+
+                            print('API responses at the %sth request' % (i + 1))
+                            request_time = request_time + (i + 1)
+
+                            break
+
+                        elif i == 99:
+                            print('You have gotten the oldest tweet.')
+                            break
+
+        return self.tweets
+
+    def get_users_latest_tweets(self, user_id, since_id, max_results=5):
+        """
+        get the newest tweets from a user with the newest tweet_id
+        :param user_id: a user id
+        :param max_results: default 5 tweets
+        :param since_id: returns results with a Tweet ID greater than the specified ‘since’ Tweet ID
+        :return: tweets in dict structure
+        """
+
+        # authorize twitter, initialize
+        client = tweepy.Client(bearer_token=self.bearer_token,
+                               consumer_key=self.consumer_key,
+                               consumer_secret=self.consumer_secret,
+                               access_token=self.access_token,
+                               access_token_secret=self.access_token_secret)
+
+        request_time = 0  # the number of requests
+        self.tweets = []
+        i = 0
+
+        while (request_time <= 100) & (i != 99):  # the maximum number of requests that you want to send
+
+            if len(self.tweets) == 0:
                 for i in range(0, 100):
                     tweet = client.get_users_tweets(id=user_id,
                                                     max_results=max_results,
-                                                    until_id=until_id,
+                                                    since_id=since_id,
                                                     expansions='author_id',
                                                     tweet_fields='created_at')
 
                     if tweet.data is not None:
-                        tweets.append(tweet)
+                        self.tweets.append(tweet)
 
                         print('API responses at the %sth request' % (i + 1))
                         request_time = request_time + (i + 1)
@@ -63,19 +161,20 @@ def get_users_tweets(user_id, max_results=5, until_id=None):
                         break
 
                     elif i == 99:
-                        print('You have gotten the oldest tweet.')
+                        print('You have gotten the newest tweet.')
                         break
             else:
-                until_id = tweets[-1].meta['oldest_id']
+                until_id = self.tweets[-1].meta['oldest_id']
                 for i in range(0, 100):
                     tweet = client.get_users_tweets(id=user_id,
                                                     max_results=max_results,
+                                                    since_id=since_id,
                                                     until_id=until_id,
                                                     expansions='author_id',
                                                     tweet_fields='created_at')
 
                     if tweet.data is not None:
-                        tweets.append(tweet)
+                        self.tweets.append(tweet)
 
                         print('API responses at the %sth request' % (i + 1))
                         request_time = request_time + (i + 1)
@@ -83,80 +182,67 @@ def get_users_tweets(user_id, max_results=5, until_id=None):
                         break
 
                     elif i == 99:
-                        print('You have gotten the oldest tweet.')
+                        print('You have gotten the newest tweet.')
                         break
 
-    return tweets
+        return self.tweets
 
+    def store_tweets_in_json(self):
+        """
+        convert tweets obtained from get_users_tweets() to json
+        :return: tweets in json format
+        """
 
-def get_users_latest_tweets(user_id, since_id, max_results=5):
-    """
-    get tweets from a user with the newest tweet_id
-    :param user_id: a user id
-    :param max_results: default 5 tweets
-    :param since_id: Returns results with a Tweet ID greater than the specified ‘since’ Tweet ID
-    :return: tweets in dict structure
-    """
+        self.tweets_in_json = []
 
-    # authorize twitter, initialize
-    client = tweepy.Client(bearer_token=bearer_token,
-                           consumer_key=consumer_key,
-                           consumer_secret=consumer_secret,
-                           access_token=access_token,
-                           access_token_secret=access_token_secret)
+        for every_tweet in self.tweets:
+            for tweet in every_tweet.data:
+                obj = {}
+                obj['author_id'] = tweet.author_id
+                obj['tweet_id'] = tweet.id
+                obj['text'] = tweet.text
+                obj['created_at'] = tweet.created_at.isoformat().replace('+00:00', 'Z')
+                self.tweets_in_json.append(obj)
 
-    request_time = 0  # the number of requests
-    tweets = []
-    i = 0
+        with open('../data_tweets/MyTweets.json', 'a') as f:
+            json.dump(self.tweets_in_json, f, indent=4)
 
-    while (request_time <= 100) & (i != 99):  # the maximum number of requests that you want to send
+        return self.tweets_in_json
 
-        if len(tweets) == 0:
-            for i in range(0, 100):
-                tweet = client.get_users_tweets(id=user_id,
-                                                max_results=max_results,
-                                                since_id=since_id,
-                                                expansions='author_id',
-                                                tweet_fields='created_at')
+    def store_tweets_in_dataframe(self):
+        """
+        convert tweets in dataframe and store csv data to local file
+        """
 
-                if tweet.data is not None:
-                    tweets.append(tweet)
+        if self.tweets_in_json is not None:
+            self.tweets_in_dataframe = pd.DataFrame(self.tweets_in_json)
+            self.tweets_in_dataframe.to_csv('../data_tweets/MyTweets.csv')
+            return self.tweets_in_dataframe
 
-                    print('API responses at the %sth request' % (i + 1))
-                    request_time = request_time + (i + 1)
-
-                    break
-
-                elif i == 99:
-                    print('You have gotten the newest tweet.')
-                    break
         else:
-            until_id = tweets[-1].meta['oldest_id']
-            for i in range(0, 100):
-                tweet = client.get_users_tweets(id=user_id,
-                                                max_results=max_results,
-                                                since_id=since_id,
-                                                until_id=until_id,
-                                                expansions='author_id',
-                                                tweet_fields='created_at')
-
-                if tweet.data is not None:
-                    tweets.append(tweet)
-
-                    print('API responses at the %sth request' % (i + 1))
-                    request_time = request_time + (i + 1)
-
-                    break
-
-                elif i == 99:
-                    print('You have gotten the newest tweet.')
-                    break
-
-    return tweets
+            print("You need to call store_tweets_in_json() method first.")
 
 
 # the below doesn't run when script is called via 'import'
 if __name__ == '__main__':
+    import __path
+    from twitter_credentials import bearer_token, consumer_key, consumer_secret, access_token, access_token_secret
+
+    get_tweets = GetUserTweets(bearer_token, consumer_key, consumer_secret, access_token, access_token_secret)
+
+    # # get user id test
+    # user_name = ['elonmusk', 'WSJmarkets']
+    # get_tweets.get_user_id(user_name)
+
+    # get latest tweets test
     user_id = '44196397'  # elon musk
-    tweets = get_users_latest_tweets(user_id, since_id='1513288055146225671', max_results=100)
-    print(tweets)
+    get_tweets.get_users_latest_tweets(user_id, since_id='1520645386427195392', max_results=100)
+    print(get_tweets.tweets)
+
+    # store tweets in json test
+    get_tweets.store_tweets_in_json()
+    print(get_tweets.tweets_in_json)
+
+    # store tweets in csv test
+    get_tweets.store_tweets_in_dataframe()
+    print(get_tweets.tweets_in_dataframe)
