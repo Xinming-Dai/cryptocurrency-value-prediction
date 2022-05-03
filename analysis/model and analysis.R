@@ -1,4 +1,4 @@
-source('C:/Users/wangy/Desktop/MDML/helper.R')
+source('helper.R')
 library(ggplot2)
 options("getSymbols.warning4.0"=FALSE)
 options("getSymbols.yahoo.warning"=FALSE)
@@ -103,7 +103,7 @@ p <-
                       values = c("blue", "red"))
 p
 
-# ggsave(plot = p, file = '../figures/tweets_and_returns.png', height = 5, width = 10)
+ggsave(plot = p, file = '../figures/tweets_and_returns.png', height = 4, width = 7)
 
 # Part II: Introducing time series in order to do a better fit (complex models)-----------------------------------------------------
 
@@ -146,6 +146,8 @@ p1 <- ggplot(data = arima1, aes(x = date)) +
   ggtitle("Arima model: True vs Predict")
 p1
 
+ggsave(plot = p1, file = '../figures/arima_true_and_predict.png', height = 4, width = 7)
+
 # calculate the average square root of residual to see how well the fit mathematically
 mean(arima1$sq_residuals)
 
@@ -169,6 +171,8 @@ p2 <- ggplot(data = bsts1, aes(x = date)) +
   ggtitle("BSTS model: True vs Predict")
 p2
 
+ggsave(plot = p2, file = '../figures/bsts_true_and_predict.png', height = 4, width = 7)
+
 # calculate the average square root of residual to see how well the fit mathematically
 mean(bsts1$sq_residuals)
 
@@ -191,6 +195,8 @@ p3 <- ggplot(data = rf1, aes(x = date)) +
                       values = c("blue", "red"))+
   ggtitle("Random Forest model: True vs Predict")
 p3
+
+ggsave(plot = p3, file = '../figures/rf1_true_and_predict.png', height = 4, width = 7)
 
 # calculate the average square root of residual to see how well the fit mathematically
 mean(rf1$sq_residuals)
@@ -217,3 +223,5 @@ p4 <- ggplot(data = tests, aes(x = date)) +
   ggtitle("RandomForest vs Arima vs BSTS")
   
 p4
+
+ggsave(plot = p4, file = '../figures/all_true_and_predict.png', height = 4, width = 7)
