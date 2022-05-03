@@ -1,4 +1,5 @@
 import tweepy
+import time
 import json
 import pandas as pd
 
@@ -10,6 +11,11 @@ class GetUserTweets:
         self.consumer_secret = consumer_secret
         self.access_token = access_token
         self.access_token_secret = access_token_secret
+        self.client = tweepy.Client(bearer_token=self.bearer_token,
+                                    consumer_key=self.consumer_key,
+                                    consumer_secret=self.consumer_secret,
+                                    access_token=self.access_token,
+                                    access_token_secret=self.access_token_secret)
         self.user_id = []
         self.tweets = []
         self.tweets_in_json = []
@@ -23,15 +29,8 @@ class GetUserTweets:
         :return: user id
         """
 
-        # authorize twitter, initialize
-        client = tweepy.Client(bearer_token=self.bearer_token,
-                               consumer_key=self.consumer_key,
-                               consumer_secret=self.consumer_secret,
-                               access_token=self.access_token,
-                               access_token_secret=self.access_token_secret)
-
         for username in user_name:
-            get_user = client.get_user(username=username)
+            get_user = self.client.get_user(username=username)
             self.user_id.append(get_user.data.id)
 
         print(self.user_id)
@@ -40,31 +39,28 @@ class GetUserTweets:
     def get_users_tweets(self, user_id, max_results=5, until_id=None):
         """
         get tweets from a user with the oldest tweet_id
-        :param user_id: a user id
+        :param user_id: a list of user ids
         :param max_results: default 5 tweets
         :param until_id: the oldest tweet id. default is None.
         :return: tweets in dict structure
         """
 
-        # authorize twitter, initialize
-        client = tweepy.Client(bearer_token=self.bearer_token,
-                               consumer_key=self.consumer_key,
-                               consumer_secret=self.consumer_secret,
-                               access_token=self.access_token,
-                               access_token_secret=self.access_token_secret)
-
         request_time = 0  # the number of requests
-        self.tweets = []
         i = 0
 
         while (request_time <= 100) & (i != 99):  # the maximum number of requests that you want to send
 
             if until_id is None:  # send request to get the latest tweets
                 for i in range(0, 100):  # try to send maximum 100 request
-                    tweet = client.get_users_tweets(id=user_id,
-                                                    max_results=max_results,
-                                                    expansions='author_id',
-                                                    tweet_fields='created_at')
+                    try:
+                        tweet = self.client.get_users_tweets(id=user_id,
+                                                             max_results=max_results,
+                                                             expansions='author_id',
+                                                             tweet_fields='created_at')
+                    except tweepy.RateLimitError:
+                        print("...sleeping for 15min due to Twitter API rate limit")
+                        time.sleep((15 * 60) + 1)
+                        continue
 
                     if tweet.data is not None:  # successfully get response
                         self.tweets.append(tweet)
@@ -82,11 +78,16 @@ class GetUserTweets:
             else:  # send request to get tweets older than the until_id
                 if len(self.tweets) == 0:
                     for i in range(0, 100):
-                        tweet = client.get_users_tweets(id=user_id,
-                                                        max_results=max_results,
-                                                        until_id=until_id,
-                                                        expansions='author_id',
-                                                        tweet_fields='created_at')
+                        try:
+                            tweet = self.client.get_users_tweets(id=user_id,
+                                                                 max_results=max_results,
+                                                                 until_id=until_id,
+                                                                 expansions='author_id',
+                                                                 tweet_fields='created_at')
+                        except tweepy.RateLimitError:
+                            print("...sleeping for 15min due to Twitter API rate limit")
+                            time.sleep((15 * 60) + 1)
+                            continue
 
                         if tweet.data is not None:
                             self.tweets.append(tweet)
@@ -102,11 +103,16 @@ class GetUserTweets:
                 else:
                     until_id = self.tweets[-1].meta['oldest_id']
                     for i in range(0, 100):
-                        tweet = client.get_users_tweets(id=user_id,
-                                                        max_results=max_results,
-                                                        until_id=until_id,
-                                                        expansions='author_id',
-                                                        tweet_fields='created_at')
+                        try:
+                            tweet = self.client.get_users_tweets(id=user_id,
+                                                                 max_results=max_results,
+                                                                 until_id=until_id,
+                                                                 expansions='author_id',
+                                                                 tweet_fields='created_at')
+                        except tweepy.RateLimitError:
+                            print("...sleeping for 15min due to Twitter API rate limit")
+                            time.sleep((15 * 60) + 1)
+                            continue
 
                         if tweet.data is not None:
                             self.tweets.append(tweet)
@@ -131,13 +137,6 @@ class GetUserTweets:
         :return: tweets in dict structure
         """
 
-        # authorize twitter, initialize
-        client = tweepy.Client(bearer_token=self.bearer_token,
-                               consumer_key=self.consumer_key,
-                               consumer_secret=self.consumer_secret,
-                               access_token=self.access_token,
-                               access_token_secret=self.access_token_secret)
-
         request_time = 0  # the number of requests
         self.tweets = []
         i = 0
@@ -146,11 +145,16 @@ class GetUserTweets:
 
             if len(self.tweets) == 0:
                 for i in range(0, 100):
-                    tweet = client.get_users_tweets(id=user_id,
-                                                    max_results=max_results,
-                                                    since_id=since_id,
-                                                    expansions='author_id',
-                                                    tweet_fields='created_at')
+                    try:
+                        tweet = self.client.get_users_tweets(id=user_id,
+                                                             max_results=max_results,
+                                                             since_id=since_id,
+                                                             expansions='author_id',
+                                                             tweet_fields='created_at')
+                    except tweepy.RateLimitError:
+                        print("...sleeping for 15min due to Twitter API rate limit")
+                        time.sleep((15 * 60) + 1)
+                        continue
 
                     if tweet.data is not None:
                         self.tweets.append(tweet)
@@ -166,12 +170,17 @@ class GetUserTweets:
             else:
                 until_id = self.tweets[-1].meta['oldest_id']
                 for i in range(0, 100):
-                    tweet = client.get_users_tweets(id=user_id,
-                                                    max_results=max_results,
-                                                    since_id=since_id,
-                                                    until_id=until_id,
-                                                    expansions='author_id',
-                                                    tweet_fields='created_at')
+                    try:
+                        tweet = self.client.get_users_tweets(id=user_id,
+                                                             max_results=max_results,
+                                                             since_id=since_id,
+                                                             until_id=until_id,
+                                                             expansions='author_id',
+                                                             tweet_fields='created_at')
+                    except tweepy.RateLimitError:
+                        print("...sleeping for 15min due to Twitter API rate limit")
+                        time.sleep((15 * 60) + 1)
+                        continue
 
                     if tweet.data is not None:
                         self.tweets.append(tweet)
@@ -190,7 +199,7 @@ class GetUserTweets:
     def store_tweets_in_json(self):
         """
         convert tweets obtained from get_users_tweets() to json
-        :return: tweets in json format
+        :return: tweets in dict format and store json file to local
         """
 
         self.tweets_in_json = []
@@ -212,9 +221,10 @@ class GetUserTweets:
     def store_tweets_in_dataframe(self):
         """
         convert tweets in dataframe and store csv data to local file
+        :return: tweets in data frame format and store csv file to local
         """
 
-        if self.tweets_in_json is not None:
+        if len(self.tweets_in_json) != 0:
             self.tweets_in_dataframe = pd.DataFrame(self.tweets_in_json)
             self.tweets_in_dataframe.to_csv('../data_tweets/MyTweets.csv')
             return self.tweets_in_dataframe
