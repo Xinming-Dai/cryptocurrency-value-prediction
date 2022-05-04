@@ -6,7 +6,7 @@ This is the final project for **APSTA-GE 2047** *Messy Data and Machine Learning
 * [Yu Wang](https://github.com/yw6010)
 
 ## Methods
-* Logistic regression
+* Logistic Regression
 * ARIMA
 * Bayesian Structural Time Series(BSTS)
 * Random Forest
