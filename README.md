@@ -1,5 +1,5 @@
 # Cryptocurrencies Value Prediction
-This is the final project for APSTA-GE 2047 Messy Data and Machine Learning course.
+This is the final project for **APSTA-GE 2047** *Messy Data and Machine Learning* course.
 ## Collaborators
 * [Andrew Cooke](https://github.com/aj-cooke)
 * [Xinming Dai](https://github.com/Xinming-Dai)
