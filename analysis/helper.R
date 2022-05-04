@@ -1,4 +1,5 @@
-#install.packages(tidyquant)
+#install.packages('tidyquant')
+#install.packages('bsts')
 library(tidyquant)
 library(zoo)
 library(dplyr)
@@ -8,7 +9,7 @@ library(ranger)
 library(tidytext)
 library(ROCR)
 library(tidyverse)
-setwd('C:/Users/wangy/Desktop/MDML')
+#setwd('C:/Users/wangy/Desktop/MDML')
 
 # helper functions relates to tweets data----------------------------------------------------------------------------------------
 # bag of words related to cryptos

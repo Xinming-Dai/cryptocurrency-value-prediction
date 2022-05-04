@@ -1,11 +1,12 @@
 # source code of all helper functions. please make sure run all of them
-source('C:/Users/wangy/Desktop/MDML/helper.R')
+#source('C:/Users/wangy/Desktop/MDML/helper.R')
+source('helper.R')
 library(ggplot2)
 options("getSymbols.warning4.0"=FALSE)
 options("getSymbols.yahoo.warning"=FALSE)
 
 
-# Part I: Using tweets relates to cryptocurrency and stock return to build model and make prediction(easy model)-------------------------------------------------------------
+# Part I: Using tweets relates to cryptocurrency and crypto return to build model and make prediction(easy model)-------------------------------------------------------------
 
 # crypto data from 2021-04-28 to 2022-04-26
 start_date <- "2021-04-28"
@@ -168,7 +169,8 @@ p2 <- ggplot(data = bsts1, aes(x = date)) +
                       values = c("blue", "red"))+
   ggtitle("BSTS model: True vs Predict")
 p2
-# ggsave(plot = p2, file = 'C:/Users/wangy/Desktop/MDML/bsts.png', height = 4, width = 7)
+#ggsave(plot = p2, file = 'C:/Users/wangy/Desktop/MDML/bsts.png', height = 4, width = 7)
+
 # calculate the average square of residual to see how well the fit mathematically
 cat('The square of residual for BSTS is',mean(bsts1$sq_residuals))
 
@@ -192,6 +194,7 @@ p3 <- ggplot(data = rf1, aes(x = date)) +
   ggtitle("Random Forest model: True vs Predict")
 p3
 # ggsave(plot = p3, file = 'C:/Users/wangy/Desktop/MDML/rf.png', height = 4, width = 7)
+
 # calculate the average square of residual to see how well the fit mathematically
 cat('The square of residual for random forest',mean(rf1$sq_residuals))
 
