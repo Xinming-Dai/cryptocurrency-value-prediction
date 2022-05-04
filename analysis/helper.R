@@ -9,7 +9,6 @@ library(ranger)
 library(tidytext)
 library(ROCR)
 library(tidyverse)
-#setwd('C:/Users/wangy/Desktop/MDML')
 
 # helper functions relates to tweets data----------------------------------------------------------------------------------------
 # bag of words related to cryptos
@@ -29,7 +28,7 @@ bag_of_words <- c('blockchain', 'coin', 'coinbase', 'cryptocurrency', 'cryptocur
                   'binance', 'U+1F415')
 
 # a csv file contains the tweets that elon musk post for one year 
-tweet_elon <- read_csv('C:/Users/wangy/Desktop/MDML/tweet_elon.csv')
+tweet_elon <- read_csv('../tweets/data_tweets/tweet_elon.csv')
 
 
 # using tidytext to unnest all the tweets
@@ -46,7 +45,7 @@ tweet_elon_crypto <-
   tweet_elon_token %>% 
   filter(words %in% bag_of_words)
 
-# write.csv(tweet_elon_crypto, 'data_tweets/tweet_elon_crypto.csv')
+# write.csv(tweet_elon_crypto, '../tweets/data_tweets/tweet_elon_crypto.csv')
 
 # count how many tweets related to cryptocurrencies that Elon tweeted
 tweet <- 

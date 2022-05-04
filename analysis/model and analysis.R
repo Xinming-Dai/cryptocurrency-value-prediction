@@ -1,5 +1,4 @@
 # source code of all helper functions. please make sure run all of them
-#source('C:/Users/wangy/Desktop/MDML/helper.R')
 source('helper.R')
 library(ggplot2)
 options("getSymbols.warning4.0"=FALSE)
@@ -12,9 +11,7 @@ options("getSymbols.yahoo.warning"=FALSE)
 start_date <- "2021-04-28"
 end_date <- "2022-04-26"
 
-# we want to use those four companies' cryptocurrency data
-tickers = c("ETH-USD", "BTC-USD", "DOGE-USD", "SOL-USD", "BCH-USD")
-
+# we want to use those four companies' cryptocurrency data "ETH-USD", "BTC-USD", "DOGE-USD", "SOL-USD", "BCH-USD"
 
 # For each company, use tq_get() to obtain their stock price from 2021-04-28 to 2022-04-26
 # then compute the difference between their open value and close value 
@@ -105,7 +102,7 @@ p <-
                       values = c("blue", "red"))
 p
 
-#ggsave(plot = p, file = 'C:/Users/wangy/Desktop/MDML/tweets_and_returns.png', height = 5, width = 10)
+# ggsave(plot = p, file = '../figures/tweets_and_returns.png', height = 5, width = 10)
 
 # Part II: Introducing time series in order to do a better fit (complex models)-----------------------------------------------------
 
@@ -147,9 +144,9 @@ p1 <- ggplot(data = arima1, aes(x = date)) +
                       values = c("blue", "red"))+
   ggtitle("Arima model: True vs Predict")
 p1
-# ggsave(plot = p1, file = 'C:/Users/wangy/Desktop/MDML/arima.png', height = 4, width = 7)
+# ggsave(plot = p1, file = '../figures/arima.png', height = 4, width = 7)
 # calculate the average square of residual to see how well the fit mathematically
-cat('The square of residual for Arima model is',mean(arima1$sq_residuals))
+cat('The square of residual for Arima model is', mean(arima1$sq_residuals))
 
 
 ## Bayesian structural time series model--------
@@ -169,12 +166,10 @@ p2 <- ggplot(data = bsts1, aes(x = date)) +
                       values = c("blue", "red"))+
   ggtitle("BSTS model: True vs Predict")
 p2
-#ggsave(plot = p2, file = 'C:/Users/wangy/Desktop/MDML/bsts.png', height = 4, width = 7)
+#ggsave(plot = p2, file = '../figures/bsts_true_and_predict.png', height = 4, width = 7)
 
 # calculate the average square of residual to see how well the fit mathematically
-cat('The square of residual for BSTS is',mean(bsts1$sq_residuals))
-
-
+cat('The square of residual for BSTS is', mean(bsts1$sq_residuals))
 
 ## Random Forest model-------
 # This random forest model still use ETH-USD(Ethereum) as the target, but we use returns as dataset since we don't actually 
@@ -193,10 +188,10 @@ p3 <- ggplot(data = rf1, aes(x = date)) +
                       values = c("blue", "red"))+
   ggtitle("Random Forest model: True vs Predict")
 p3
-# ggsave(plot = p3, file = 'C:/Users/wangy/Desktop/MDML/rf.png', height = 4, width = 7)
+# ggsave(plot = p3, file = '../figures/rf1_true_and_predict.png', height = 4, width = 7)
 
 # calculate the average square of residual to see how well the fit mathematically
-cat('The square of residual for random forest',mean(rf1$sq_residuals))
+cat('The square of residual for random forest', mean(rf1$sq_residuals))
 
 
 # Final comparison of the Arima, bsts, and random forest
@@ -221,4 +216,4 @@ p4 <- ggplot(data = tests, aes(x = date)) +
   ggtitle("RandomForest vs Arima vs BSTS")
   
 p4
-
+# ggsave(plot = p4, file = '../figures/all_true_and_predict.png', height = 4, width = 7)
