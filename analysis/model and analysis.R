@@ -192,28 +192,3 @@ p3
 
 # calculate the average square of residual to see how well the fit mathematically
 cat('The square of residual for random forest', mean(rf1$sq_residuals))
-
-
-# Final comparison of the Arima, bsts, and random forest
-tests <- merge(arima1, bsts1, by = "date", all = T)
-tests <- merge(tests, rf1, by = "date", all = T) 
-
-names(tests)[names(tests) == "pred.x"] <- "Arima.pred"
-names(tests)[names(tests) == "pred.y"] <- "BSTS.pred"
-names(tests)[names(tests) == "pred"] <- "RF.pred"
-
-# a plot of combination of all three plots 
-p4 <- ggplot(data = tests, aes(x = date)) +
-  geom_line(aes(y = true, colour = "true")) +
-  geom_line(aes(y = Arima.pred, colour = "Arima.pred")) +
-  geom_line(aes(y = BSTS.pred, colour = "BSTS.pred")) +
-  geom_line(aes(y = RF.pred, colour = "RF.pred")) +
-  labs(x = 'Date',
-       y = 'Percentage Change(return)')+
-  scale_colour_manual("", 
-                      breaks = c("true", "Arima.pred", "BSTS.pred", "RF.pred"),
-                      values = c("red", "blue", 'green', 'black'))+
-  ggtitle("RandomForest vs Arima vs BSTS")
-  
-p4
-# ggsave(plot = p4, file = '../figures/all_true_and_predict.png', height = 4, width = 7)
