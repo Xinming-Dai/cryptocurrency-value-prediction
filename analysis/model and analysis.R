@@ -80,7 +80,7 @@ eth <- eth[-1, ]
 logistic <- glm(eth ~ doge + btc + sol + bch + num_tweets, data = eth, family = 'binomial')
 summary(logistic)
 
-# make prediction for simple logistic regression and logi with interaction terms
+# make prediction for simple logistic regression
 logistic_prob <- predict(logistic, eth)
 
 # AUC

@@ -88,7 +88,7 @@ lvcf <- function(x){
 }
 
 # make a column calculate the percentage change from the other day since return is calculated by 
-# [(New Price - Old Price)/Old Price] *100
+# [(New Adjusted Closing Price - Old Adjusted Price)/Old Price] *100
 pc_col <- function(x){
   return(((x - lag(x, 1))/lag(x, 1)) * 100)
 }
