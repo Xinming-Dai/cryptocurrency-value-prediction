@@ -1,5 +1,9 @@
-# cryptocurrency-value-prediction
-This is the Messy Data and Machine Learning final project for the team with Andrew Cooke, Yu Wang, and Xinming Dai.
+# Cryptocurrencies Value Prediction
+This is the final project for APSTA-GE 2047 Messy Data and Machine Learning course.
+## Collaborators
+*Andrew Cooke
+*Xinming Dai
+*Yu Wang
 
-# Google doc for written report
+# Google Doc for Written Report
 https://docs.google.com/document/d/163jAOqS5oflKEpBr5frGacSgQ4C8-korEn40o4Vzc5s/edit?usp=sharing
