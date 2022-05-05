@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.18)  3 MAY 2022 23:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.18)  4 MAY 2022 23:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -185,20 +185,20 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 (./written_responses.aux)
 \openout1 = `written_responses.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -259,62 +259,193 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+(./written_responses.toc)
+\tf@toc=\write3
+\openout3 = `written_responses.toc'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+ [1
+
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
-<../figures/tweets_and_returns.png, id=1, 2107.875pt x 1204.5pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+<../figures/tweets_and_returns.png, id=16, 2107.875pt x 1204.5pt>
 File: ../figures/tweets_and_returns.png Graphic file (type png)
 <use ../figures/tweets_and_returns.png>
 Package pdftex.def Info: ../figures/tweets_and_returns.png  used on input line 
-32.
-(pdftex.def)             Requested size: 512.1496pt x 292.65146pt.
+54.
+(pdftex.def)             Requested size: 455.24408pt x 260.13872pt.
 
-Overfull \hbox (75.35805pt too wide) in paragraph at lines 32--33
+Overfull \hbox (18.45253pt too wide) in paragraph at lines 54--55
  [][] 
  []
 
-[1
-
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (4.3206pt too wide) in paragraph at lines 42--54
+[3 <../figures/tweets_and_returns.png>]
+Overfull \hbox (4.3206pt too wide) in paragraph at lines 64--76
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[2 <../figures/tweets_and_returns.png>] [3] (./written_responses.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+<../figures/arima_true_and_predict.png, id=33, 2107.875pt x 1204.5pt>
+File: ../figures/arima_true_and_predict.png Graphic file (type png)
+<use ../figures/arima_true_and_predict.png>
+Package pdftex.def Info: ../figures/arima_true_and_predict.png  used on input l
+ine 103.
+(pdftex.def)             Requested size: 455.24408pt x 260.13872pt.
+
+Overfull \hbox (18.45253pt too wide) in paragraph at lines 103--104
+ [][] 
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+<../figures/bsts_true_and_predict.png, id=38, 505.89pt x 289.08pt>
+File: ../figures/bsts_true_and_predict.png Graphic file (type png)
+<use ../figures/bsts_true_and_predict.png>
+Package pdftex.def Info: ../figures/bsts_true_and_predict.png  used on input li
+ne 116.
+(pdftex.def)             Requested size: 455.24408pt x 260.14311pt.
+
+Overfull \hbox (18.45253pt too wide) in paragraph at lines 116--117
+ [][] 
+ []
+
+[6 <../figures/arima_true_and_predict.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+[7 <../figures/bsts_true_and_predict.png>]
+<../figures/rf1_true_and_predict.png, id=48, 2107.875pt x 1204.5pt>
+File: ../figures/rf1_true_and_predict.png Graphic file (type png)
+<use ../figures/rf1_true_and_predict.png>
+Package pdftex.def Info: ../figures/rf1_true_and_predict.png  used on input lin
+e 131.
+(pdftex.def)             Requested size: 455.24408pt x 260.13872pt.
+
+Overfull \hbox (18.45253pt too wide) in paragraph at lines 131--132
+ [][] 
+ []
+
+
+Overfull \hbox (44.98738pt too wide) in paragraph at lines 142--143
+\OT1/cmr/m/n/10 In-ter-na-tional Con-fer-ence on Com-puter Mod-elling and Sim-u
+-la-tion, 2014, https://doi.org/10.1109/uksim.2014.67. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+
+ []
+
+[8 <../figures/rf1_true_and_predict.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
+
+ []
+
+[9] (./written_responses.aux) ) 
 Here is how much of TeX's memory you used:
- 3867 strings out of 478994
- 60865 string characters out of 5858184
- 362143 words of memory out of 5000000
- 21325 multiletter control sequences out of 15000+600000
- 414059 words of font info for 63 fonts, out of 8000000 for 9000
+ 3894 strings out of 478994
+ 61696 string characters out of 5858184
+ 365167 words of memory out of 5000000
+ 21345 multiletter control sequences out of 15000+600000
+ 414331 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,7n,74p,859b,281s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/lo
-cal/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on written_responses.pdf (3 pages, 399281 bytes).
+ 68i,7n,74p,1079b,281s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmib10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/ams
+fonts/cmextra/cmmib7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy7.pfb>
+Output written on written_responses.pdf (9 pages, 1036509 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
