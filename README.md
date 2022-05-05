@@ -8,8 +8,7 @@ This is the final project for **APSTA-GE 2047** *Messy Data and Machine Learning
 ## Abstract
 Cryptocurrenies are not only used as a way of transaction. Major companies like Tesla starts to invest cryptos, and crypto even goes to war in Ukraine. The market sees high volatility of crypto price, which makes it’s hard to manage a good book. We focus on several major cryptos and predict the daily returns of Ethereum by using ARIMA, Bayesian structural time series (BSTS), and random forest. Our research finds that BSTS results in the best MSE.
 
-[[/figures/bsts_true_and_predict.png|ALT TEXT]]
-![Alt text](figures/bsts_true_and_predict.png?raw=true "Title")
+![Alt text](figures/bsts_true_and_predict.png|width=100)
 
 ## Methods
 * Logistic Regression
