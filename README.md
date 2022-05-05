@@ -14,7 +14,7 @@ Cryptocurrenies are not only used as a way of transaction. Major companies like 
   
 </div>
 
-
+<a href="url"><img src="https://github.com/Xinming-Dai/cryptocurrency-value-prediction/blob/main/figures/bsts_true_and_predict.png" align="left" height="48" width="48" ></a>
 
 ## Methods
 * Logistic Regression
