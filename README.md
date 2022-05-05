@@ -10,7 +10,7 @@ Cryptocurrenies are not only used as a way of transaction. Major companies like 
 
 <div style="width: 60%">
   
-  ![Alt text](figures/bsts_true_and_predict.png |width=100)
+  ![Alt text](figures/bsts_true_and_predict.png)
   
 </div>
 
