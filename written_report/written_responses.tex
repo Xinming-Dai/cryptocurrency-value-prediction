@@ -11,6 +11,7 @@
 \usepackage{array}
 \usepackage{geometry}
 \usepackage{amsmath, bm}
+\usepackage{hyperref}
 \title{Machine Learning-Based Cryptocurrency Price Prediction} % come up with a good title
 \author{Andrew Cooke, Yu Wang, Xinming Dai}
 \geometry{left=3cm} 
@@ -45,7 +46,9 @@ Cryptocurrenies are not only used as a way of transaction. Major companies like 
 \section{Data Collection and Description}
 \subsection{Tweets from Elon Musk}
 
-The goal was to collect Elon Musk’s tweets and identify which of them were cryptocurrency-related text. Tweepy library in Python was used to access Twitter API, and only the 3200 most recent tweets are available for each user.\\
+The goal was to collect Elon Musk’s tweets and identify which of them were cryptocurrency-related text. \href{https://github.com/Xinming-Dai/cryptocurrency-value-prediction/blob/main/tweets/functions/get_user_tweets.py}{Tweepy library in Python was used to access Twitter API}, and only the 3200 most recent tweets are available for each user.\\
+
+
 
 \noindent A bag of crypto words containing cryptocurrency’s names and symbols was created, and then pre-selected words were used to match crypto-related tweets. 3559 Elon Musk’s tweets from 2021-05-28 to 2022-05-01 were collected, 2.39\% of which consisted of cryptocurrency-related words. He tweeted about crypto up to 5 times a day, but most of the time he didn’t tweet about crypto. Figure 1 indicates that there is a high correlation between whether Elon tweets cryptos and high volatility of Ethereum prices. The highly volatile adjusted closing price returns is related to when Elon tweets about cryptos and the number of his crypto tweets. Returns of less than 5\% are omitted from Figure \ref{fig: tweets_and_returns} because 5\% is within its normal range of volatility.
 
